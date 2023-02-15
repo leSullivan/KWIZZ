@@ -12,7 +12,7 @@ const Navbar = () => {
                 <li>Leaderboard</li>
             </ul> */}
       <div className="spacer" />
-      <h2 onClick={()=>navigate('/')}> kwizz </h2>
+      <h2 onClick={() => navigate("/")}> kwizz. </h2>
       <button>Log In</button>
 
       {/* <div className="userAccount">{userName}</div>  user: ? btn*/}

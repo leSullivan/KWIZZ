@@ -4,8 +4,9 @@
   margin: 0.5rem 0px;
 }
 
-button{
+.gameButton{
     width: 100%;
-    color: #000;
+    margin-top: 1rem;
+    color: F5F7FB;
 }
 

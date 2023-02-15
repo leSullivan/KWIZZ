@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import Question from "./Question";
+import { useNavigate } from "react-router-dom";
+import Question from "../components/game/Question";
 import { nanoid } from "nanoid";
-import "./gamescreen.css"
+import "./gamescreen.css";
 
 type OpentdbAPI = {
   category: string;
@@ -22,15 +23,19 @@ type QuestionProps = {
   toggleSelected: (id: string, answer: string) => void;
 };
 
-export default function GameScreen(props: any) {
+export default function GameScreen() {
   const [loading, setLoading] = useState(true);
   const [questions, setQuestions] = useState<Array<QuestionProps> | null>();
-  const [gameFinished, setGameFinished] = useState({checkAnswered: false, finished: false});
+  const [gameFinished, setGameFinished] = useState({
+    checkAnswered: false,
+    finished: false,
+  });
   const [score, setScore] = useState(0);
   const [gameSettings, setGameSettings] = useState({
     questionAmount: 5,
   });
 
+  const navigate = useNavigate();
 
   async function fetchQuestions() {
     setLoading(true);
@@ -39,7 +44,7 @@ export default function GameScreen(props: any) {
     );
     const data = await res.json();
     console.log(data);
-    if(data.response_code !== 0) {
+    if (data.response_code !== 0) {
       return;
     }
     const updatedQuestions: Array<QuestionProps> = data.results.map(
@@ -82,47 +87,46 @@ export default function GameScreen(props: any) {
   }, []);
 
   function toggleSelected(id: string, answer: string) {
-    if (questions) {
-      if (gameFinished.finished) {
-        return;
-      }
-      const updatedQuestions = questions.map((question) => {
-        if (question.id === id) {
-          question.selectedAnswer = answer;
-        }
-        return question;
-      });
-      setQuestions(updatedQuestions);
+    if (!questions || gameFinished.finished) {
+      return;
     }
+    const updatedQuestions = questions.map((question) => {
+      if (question.id === id) {
+        question.selectedAnswer = answer;
+      }
+      return question;
+    });
+    setQuestions(updatedQuestions);
   }
 
   function checkAnswers() {
-    if (questions) {
-      const allAnswered = questions.every(
-        (question) => question.selectedAnswer != null
-      );
-      if (!allAnswered) {
-        setGameFinished(prev => ({
-            ...prev,
-            checkAnswered: true
-        }));
-        return;
-      }
-      questions.forEach((question) => {
-        if (question.correctAnswer === question.selectedAnswer) {
-          setScore(score => score + 1);
-        }
-      });
-      setGameFinished(prev => ({
-        ...prev,
-       finished: true
-      }));
+    if (!questions) {
+      return;
     }
+    const allAnswered = questions.every(
+      (question) => question.selectedAnswer != null
+    );
+    if (!allAnswered) {
+      setGameFinished((prev) => ({
+        ...prev,
+        checkAnswered: true,
+      }));
+      return;
+    }
+    questions.forEach((question) => {
+      if (question.correctAnswer === question.selectedAnswer) {
+        setScore((score) => score + 1);
+      }
+    });
+    setGameFinished((prev) => ({
+      ...prev,
+      finished: true,
+    }));
   }
 
   function restartGame() {
     setScore(0);
-    setGameFinished({checkAnswered: false, finished: false});
+    setGameFinished({ checkAnswered: false, finished: false });
     fetchQuestions();
   }
 
@@ -149,22 +153,29 @@ export default function GameScreen(props: any) {
     <p>Loading...</p>
   ) : (
     <section className="game--screen">
+      <h1>Game Screen</h1>
+      <div className="questions">
+        <>{questionComponents}</>
+      </div>
       {gameFinished.finished && (
         <p className="score">
           Score: {score}/{gameSettings.questionAmount}
         </p>
       )}
-      <div className="questions"><>{questionComponents}</></div>
       {gameFinished.finished ? (
         <div className="restart--options">
-          <button onClick={restartGame}>Start new Round</button>
-          <button onClick={props.changeSettings}>Change Settings</button>
+          <button onClick={restartGame} className="gameButton">
+            Start new Round
+          </button>
+          <button onClick={() => navigate("/")} className="gameButton">
+            Change Settings
+          </button>
         </div>
       ) : (
-        <button onClick={checkAnswers}>Check Answers</button>
+        <button onClick={checkAnswers} className="gameButton">
+          Check Answers
+        </button>
       )}
     </section>
   );
 }
-
-
