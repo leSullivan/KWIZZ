@@ -1,23 +1,11 @@
-.questions {
-  max-height: 50rem;
-  padding: 0.5rem;
-  overflow-y: scroll;
-}
-
-.game--screen {
-  text-align: center;
-}
-
 .score {
   text-align: center;
   font-size: 1.5rem;
   margin: 0.5rem 0px;
 }
 
-.game--screen button {
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
-  padding: 1.3rem 1.8rem;
-  font-size: 1.2rem;
+button{
+    width: 100%;
+    color: #000;
 }
+

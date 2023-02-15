@@ -1,15 +1,14 @@
 .start--screen{
-    height: 100vh;
     display: flex;
     flex-direction: row;
-    align-items: stretch;
-    gap: 14rem;
-    margin-top: 22vh;
+    align-items: center;
+    gap: 12rem;
+    margin-top: auto;
   }
   
   .start--screen-logo{
-    width: 30rem;
-    height: 30rem;
+    width: 35rem;
+    height: 35rem;
     margin-bottom: 2rem;
     animation: logo 2s;
   }

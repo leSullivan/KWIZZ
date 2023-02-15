@@ -1,9 +1,11 @@
+
+
 nav {
   background-color: #293264;
   color: #DEEBF8;
   padding: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: row;
   align-items: center;
   height: 2.5rem;
@@ -14,6 +16,8 @@ h2 {
   font-weight: 500;
   color: #DEEBF8;
   margin-left: 1rem;
+  margin-inline: auto;
+  cursor: pointer;
 }
 
 ul{
@@ -22,6 +26,11 @@ ul{
     flex-direction: row;
     gap: 1rem;
     margin: 0px;
+}
+
+.spacer{
+  margin-left: 1.5rem;
+  width: 5.5rem;
 }
 
 button{
@@ -35,4 +44,5 @@ button{
     cursor: pointer;
     margin-right: 1.5rem;
     transition: border-color 0.25s;
+    width: 6rem;
 }
