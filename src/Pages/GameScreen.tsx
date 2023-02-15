@@ -134,18 +134,21 @@ export default function GameScreen() {
   const questionComponents = questions
     ? questions.map((question) => {
         return (
-          <Question
-            key={question.id}
-            id={question.id}
-            question={question.question}
-            answers={question.answers}
-            correctAnswer={question.correctAnswer}
-            selectedAnswer={question.selectedAnswer}
-            type={question.type}
-            gameFinished={gameFinished.finished}
-            checkAnswered={gameFinished.checkAnswered}
-            toggleSelected={toggleSelected}
-          />
+          <div>
+            <Question
+              key={question.id}
+              id={question.id}
+              question={question.question}
+              answers={question.answers}
+              correctAnswer={question.correctAnswer}
+              selectedAnswer={question.selectedAnswer}
+              type={question.type}
+              gameFinished={gameFinished.finished}
+              checkAnswered={gameFinished.checkAnswered}
+              toggleSelected={toggleSelected}
+            />
+            <hr />
+          </div>
         );
       })
     : console.log("no questions");

@@ -17,6 +17,11 @@
   animation: loaging-logo  2s  ease-in infinite;
 }
 
+hr{
+  border: 0.5px solid #8589a074;
+  width: 100%;
+}
+
 @keyframes loaging-logo {
   0% {
     opacity: 1;

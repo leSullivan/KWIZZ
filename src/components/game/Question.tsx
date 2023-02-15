@@ -52,7 +52,6 @@ export default function Question(props: QuestionProps) {
         {props.selectedAnswer === null && props.checkAnswered && <img src={missing} alt="missing" className="missing-answered" />}
       </div>
       <div className="answers">{answers}</div>
-      <hr />
     </section>
   );
 }
