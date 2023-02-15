@@ -10,3 +10,22 @@
     color: F5F7FB;
 }
 
+.loading--logo{
+  margin: 0;
+  width: 35rem;
+  height: 35rem;
+  animation: loaging-logo  2s  ease-in infinite;
+}
+
+@keyframes loaging-logo {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+  

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Question from "../components/game/Question";
 import { nanoid } from "nanoid";
+import logo from "../assets/logo.svg";
 import "./gamescreen.css";
 
 type OpentdbAPI = {
@@ -150,7 +151,7 @@ export default function GameScreen() {
     : console.log("no questions");
 
   return loading ? (
-    <p>Loading...</p>
+    <img src={logo} alt='logo' className="loading--logo"/>
   ) : (
     <section className="game--screen">
       <h1>Game Screen</h1>

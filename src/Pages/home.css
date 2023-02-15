@@ -1,23 +1,30 @@
-.start--screen{
+.home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+  }
+
+  .home--content{
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 12rem;
-    margin-top: auto;
+    justify-content: center;
+    gap: 2rem;
   }
   
-  .start--screen-logo{
+  .home--logo{
     width: 35rem;
     height: 35rem;
     margin-bottom: 2rem;
-    animation: logo 2s;
+    animation: home-logo ease-out 1.5s;
   }
   
   form{
     display: flex;
     flex-direction: column;
     align-items: start;
-    animation: game-screen--input 2s ;
+    animation: home-start ease-out 1.5s ;
   }
   
   form input{
@@ -32,4 +39,34 @@
   form button{
     margin-top: 1rem;
     width: 100%;
+  }
+
+  @keyframes home-logo {
+    0% {
+      opacity: 0;
+      transform: translateX(200px);
+    }
+    80% {
+      opacity: 1;
+      transform: translateX(200px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+  }
+  
+  @keyframes home-start {
+    0% {
+      opacity: 0;
+      transform: translateY(200px);
+    }
+    75%{
+      opacity: 0;
+      transform: translateY(200px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
   }
