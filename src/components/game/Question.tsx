@@ -1,4 +1,5 @@
-import missing from "../assets/missing.png";
+import missing from "../../assets/missing.png";
+import "./question.css"
 
 interface QuestionProps {
   id: string;

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Question from "./Question";
 import { nanoid } from "nanoid";
+import "./gameScreen.css"
 
 type OpentdbAPI = {
   category: string;
@@ -148,7 +149,7 @@ export default function GameScreen(props: any) {
     <p>Loading...</p>
   ) : (
     <section className="game--screen">
-      <h1>Kwizz</h1>
+      <h1>kwizz</h1>
       {gameFinished.finished && (
         <p className="score">
           Score: {score}/{gameSettings.questionAmount}

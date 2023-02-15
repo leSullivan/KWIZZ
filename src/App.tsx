@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import StartScreen from "./components/StartScreen";
-import GameScreen from "./components/GameScreen";
+import Home from "./components/Home";
+import GameScreen from "./components/game/GameScreen";
+import Navbar from "./components/Navbar";
 
 import blob1 from "./assets/blob1.svg";
 import blob2 from "./assets/blob2.svg";
@@ -10,15 +11,20 @@ function App() {
 
   return (
     //navbar??
-    <main>
-      <img src={blob1} className="blob1" alt="blob" />
-      {started ? (
-        <GameScreen changeSettings={() => startGame(false)}/>
-      ) : (
-        <StartScreen startGame={() => startGame(true)} />
-      )}
-      <img src={blob2} className="blob2" alt="blob" />
-    </main>
+    //später route zum GameScreen
+    <div className="App">
+      <Navbar />
+      <main>
+        <img src={blob1} className="blob1" alt="blob" />
+        {started ? (
+          <GameScreen changeSettings={() => startGame(false)}/>
+        ) : (
+          <Home startGame={() => startGame(true)} />
+        )}
+        <img src={blob2} className="blob2" alt="blob" />
+      </main>
+    </div>
+    
   );
 }
 
