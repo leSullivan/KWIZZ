@@ -1,0 +1,38 @@
+nav {
+  background-color: #293264;
+  color: #DEEBF8;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  height: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #DEEBF8;
+  margin-left: 1rem;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin: 0px;
+}
+
+button{
+    border: 0px;
+    background-color: #4D5B9E;
+    color: #DEEBF8;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-right: 1.5rem;
+    transition: border-color 0.25s;
+}
