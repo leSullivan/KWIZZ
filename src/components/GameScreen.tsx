@@ -37,6 +37,10 @@ export default function GameScreen(props: any) {
       `https://opentdb.com/api.php?amount=${gameSettings.questionAmount}`
     );
     const data = await res.json();
+    console.log(data);
+    if(data.response_code !== 0) {
+      return;
+    }
     const updatedQuestions: Array<QuestionProps> = data.results.map(
       (question: OpentdbAPI) => {
         const parser = new DOMParser();

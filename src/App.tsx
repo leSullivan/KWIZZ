@@ -9,6 +9,7 @@ function App() {
   const [started, startGame] = useState(false);
 
   return (
+    //navbar??
     <main>
       <img src={blob1} className="blob1" alt="blob" />
       {started ? (
