@@ -5,6 +5,7 @@ import GameScreen from "./Pages/GameScreen";
 import Navbar from "./components/Navbar";
 import PageNotFound from "./Pages/NotFound";
 import Footer from "./components/Footer";
+import Login from "./Pages/Login";
 
 import blob1 from "./assets/blob1.svg";
 import blob2 from "./assets/blob2.svg";
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/game" element={<GameScreen />} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         {/* <img src={blob1} className="blob1" alt="blob" /> */}

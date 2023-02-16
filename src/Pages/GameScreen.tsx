@@ -44,7 +44,6 @@ export default function GameScreen() {
       `https://opentdb.com/api.php?amount=${gameSettings.questionAmount}`
     );
     const data = await res.json();
-    console.log(data);
     if (data.response_code !== 0) {
       return;
     }

@@ -11,7 +11,7 @@ nav {
   height: 2.5rem;
 }
 
-h2 {
+.navbar--title {
   font-size: 2rem;
   font-weight: 500;
   color: #DEEBF8;

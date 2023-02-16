@@ -11,10 +11,10 @@ export default function StartScreen() {
     <div className="home">
       <div className='home--content'>
         <img src={logo} alt="logo" className="home--logo" />
-        <form>
+        <div className="home--options">
           <p>How many questions can you answer correctly?</p>
           <button onClick={() => navigate('/game')}>Start Game</button>
-        </form>
+        </div>
       </div>
     </div>
   );
