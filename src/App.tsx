@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { auth } from "./firebase";
+import {User as FirebasUser} from "firebase/auth";
 import Home from "./Pages/Home";
 import GameScreen from "./Pages/GameScreen";
 import Navbar from "./components/Navbar";
@@ -12,13 +14,13 @@ import blob2 from "./assets/blob2.svg";
 
 function App() {
   const [loginTrigger, setLoginTrigger] = useState(false);
-
-
+  const [user , setUser] = useState<FirebasUser| null>(null);
+  
   return (
     <Router>
       <div className="frame">
-      <Navbar setLoginTrigger={setLoginTrigger}/>
-      <Login trigger={loginTrigger} setLoginTrigger={setLoginTrigger}/>
+      <Navbar setLoginTrigger={setLoginTrigger}/> 
+      <Login trigger={loginTrigger} setLoginTrigger={setLoginTrigger} />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />

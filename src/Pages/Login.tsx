@@ -2,6 +2,10 @@ import { useState } from "react";
 import "./Login.css";
 import googleLogo from "../assets/logo_google.svg";
 import kwizzLogo from "../assets/logo.svg";
+import { auth, loginEmailPassword, loginGoogle } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface LoginProps {
   trigger: boolean;
@@ -9,10 +13,18 @@ interface LoginProps {
 }
 
 const Login = (props: LoginProps) => {
+  const navigate = useNavigate();
   const [loginCredentials, updateLoginCredentials] = useState({
     email: "",
     password: "",
   });
+
+  const [user, loading, error] = useAuthState(auth);
+
+  useEffect(() => {
+    if (loading) return;
+    if (user) props.setLoginTrigger(false);
+  }, [user, loading]);
 
   return props.trigger ? (
     <div className="popup">
@@ -29,7 +41,15 @@ const Login = (props: LoginProps) => {
         <p style={{ textAlign: "left" }}>
           Create an account to save your progess and collect achievements
         </p>
-        <form className="login--form">
+        <form
+          className="login--form"
+          onSubmit={() =>
+            loginEmailPassword(
+              loginCredentials.email,
+              loginCredentials.password
+            )
+          }
+        >
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -55,7 +75,7 @@ const Login = (props: LoginProps) => {
           />
           <button type="submit">Log In</button>
         </form>
-        <div className="login--external">
+        <div className="login--external" onClick={loginGoogle}>
           <img src={googleLogo} alt="google logo" className="auth-logo" />
           Continue with Google
           <div />

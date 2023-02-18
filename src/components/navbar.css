@@ -1,6 +1,7 @@
 
 
 nav {
+  position: relative;
   background-color: #293264;
   color: #DEEBF8;
   padding: 10px;
@@ -12,6 +13,8 @@ nav {
 }
 
 .navbar--title {
+  position: absolute;
+  left: 50%;
   font-size: 2rem;
   font-weight: 500;
   color: #DEEBF8;
@@ -33,7 +36,9 @@ ul{
   width: 5.5rem;
 }
 
-button{
+.nav--button{
+  position: absolute;
+  right: 1rem;
     border: 0px;
     background-color: #4D5B9E;
     color: #DEEBF8;
