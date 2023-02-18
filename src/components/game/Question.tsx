@@ -48,7 +48,7 @@ export default function Question(props: QuestionProps) {
   return (
     <section className="question">
       <div className='question--title'>
-        <h4>{props.question}</h4>
+        <p className="question--text">{props.question}</p>
         {props.selectedAnswer === null && props.checkAnswered && <img src={missing} alt="missing" className="missing-answered" />}
       </div>
       <div className="answers">{answers}</div>
