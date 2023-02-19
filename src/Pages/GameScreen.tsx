@@ -33,7 +33,7 @@ export default function GameScreen() {
   });
   const [score, setScore] = useState(0);
   const [gameSettings, setGameSettings] = useState({
-    questionAmount: 5,
+    questionAmount: 15,
   });
 
   const navigate = useNavigate();
@@ -155,7 +155,7 @@ export default function GameScreen() {
   return loading ? (
     <img src={logo} alt='logo' className="loading--logo"/>
   ) : (
-    <section className="game--screen">
+    <section className="gamescreen">
       <h1>Game Screen</h1>
       <div className="questions">
         <>{questionComponents}</>

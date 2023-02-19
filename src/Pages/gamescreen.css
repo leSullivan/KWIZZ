@@ -1,3 +1,7 @@
+.gamescreen {
+  margin: 5rem 0px;
+}
+
 .score {
   text-align: center;
   font-size: 1.5rem;
@@ -19,6 +23,7 @@
 
 hr{
   border: 0.5px solid #8589a074;
+  margin: 1.2rem 0px;
   width: 100%;
 }
 

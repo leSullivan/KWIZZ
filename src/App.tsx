@@ -18,7 +18,6 @@ function App() {
   
   return (
     <Router>
-      <div className="frame">
       <Navbar setLoginTrigger={setLoginTrigger}/> 
       <Login trigger={loginTrigger} setLoginTrigger={setLoginTrigger} />
       <main>
@@ -30,7 +29,6 @@ function App() {
         {/* <img src={blob1} className="blob1" alt="blob" /> */}
         {/* <img src={blob2} className="blob2" alt="blob" /> */}
       </main>
-      </div>
       <Footer />
     </Router>
   );
