@@ -38,13 +38,25 @@ const db = getFirestore(app);
 //auth
 const loginEmailPassword = async (email: string, password: string) => {
   try {
-    const userCredentials = await createUserWithEmailAndPassword(
+    const userCredentials = await signInWithEmailAndPassword(
       auth,
       email,
       password
     );
     console.log(userCredentials.user);
   } catch (error) {
+    console.log(error);
+  }
+};
+
+const registerEmailPassword = async (email:string, password:string) => {
+  try {
+    const userCredentials = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    } catch (error) {
     console.log(error);
   }
 };
@@ -67,4 +79,4 @@ const logout = async () => {
   }
 };
 
-export { app, analytics, auth, db, loginEmailPassword, loginGoogle, logout };
+export { app, analytics, auth, db, loginEmailPassword, registerEmailPassword, loginGoogle, logout };
