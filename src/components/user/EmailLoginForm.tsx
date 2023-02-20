@@ -18,10 +18,12 @@ const EmailLoginForm = () => {
       auth,
       loginCredentials.email
     );
-    if (signInMethods.length !== 0) {
-      loginEmailPassword(loginCredentials.email, loginCredentials.password);
-    } else {
+    if (signInMethods.length === 0) {
       registerEmailPassword(loginCredentials.email, loginCredentials.password);
+    } else if (signInMethods.includes("password")){
+        loginEmailPassword(loginCredentials.email, loginCredentials.password);
+    } else {
+        alert("You already signed up with a different provider.");
     }
   }
 
