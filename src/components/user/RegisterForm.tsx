@@ -1,8 +1,8 @@
-const Profile = () => {
+const RegisterForm = () => {
     return( 
         <div className="profile">
         </div>
     )
 }
 
-export default Profile
+export default RegisterForm
