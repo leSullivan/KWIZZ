@@ -32,6 +32,7 @@ const EmailLoginForm = () => {
       <input
         type="email"
         placeholder="E-Mail"
+        className="popup--input"
         value={loginCredentials.email}
         onChange={(e) =>
           updateLoginCredentials({
@@ -43,6 +44,7 @@ const EmailLoginForm = () => {
       <input
         type="password"
         placeholder="Password"
+        className="popup--input"
         value={loginCredentials.password}
         onChange={(e) =>
           updateLoginCredentials({
@@ -51,7 +53,7 @@ const EmailLoginForm = () => {
           })
         }
       />
-      <button type="submit">Login / Register</button>
+      <button type="submit" className="popup--button">Login / Register</button>
     </form>
   );
 };

@@ -14,34 +14,49 @@
 .popup--inner{
   position: relative;
   background-color: #F5F7FB;
-  padding: 4rem;
+  padding: 2rem 4rem;
   border-radius: 8px;
   text-align: left;
   max-width: 500px;
 }
 
+.popup--navigation{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
 .popup-header--logo{
-  position: absolute;
-  top: 16px;
-  right: 45%;
   width: 3.5rem;
   height: 3.5rem;
 }
 
 .popup--header{
-  margin-top: 2rem;
   text-align: left;
   color: #4d5b9e;
 }
 
-.close-btn{
-  position: absolute;
-  top: 16px;
-  right: 16px;
+.popup--close{
   cursor: pointer;
-  background-color: #F5F7FB;
-  color: #4d5b9e;
   width: 1rem;
+} 
+
+.popup--back {
+  cursor: pointer;
+  width: 1.3rem;
+}
+
+.popup--link {
+  color: #4d5b9e;
+  text-align: center;
+  margin-top: 2rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.popup--link:hover {
+  text-decoration: underline;
 }
 
 .login--form {
@@ -52,13 +67,13 @@
   text-align: left;
 }
 
-.login--form input {
+.popup--input {
   width: 100%;
   margin: 0.2rem 0px;
   text-align: left;
 }
 
-.login--form button {
+.popup--button{
   width: 100%;
   margin-top: 0.5rem;
 }

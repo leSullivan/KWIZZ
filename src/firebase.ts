@@ -79,4 +79,13 @@ const logout = async () => {
   }
 };
 
-export { app, analytics, auth, db, loginEmailPassword, registerEmailPassword, loginGoogle, logout };
+const resetPassword = async (email:string) => {
+  try {
+    await sendPasswordResetEmail(auth, email);
+    return "success"
+  } catch (e:any) {
+    return e.code
+  }
+};
+
+export { app, analytics, auth, db, loginEmailPassword, registerEmailPassword, loginGoogle, logout, resetPassword };

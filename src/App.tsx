@@ -7,7 +7,7 @@ import GameScreen from "./Pages/GameScreen";
 import Navbar from "./components/Navbar";
 import PageNotFound from "./Pages/NotFound";
 import Footer from "./components/Footer";
-import Login from "./Pages/Login";
+import AuthPopup from "./Pages/AuthPopup";
 
 import blob1 from "./assets/blob1.svg";
 import blob2 from "./assets/blob2.svg";
@@ -19,7 +19,7 @@ function App() {
   return (
     <Router>
       <Navbar setLoginTrigger={setLoginTrigger}/> 
-      <Login trigger={loginTrigger} setLoginTrigger={setLoginTrigger} />
+      <AuthPopup trigger={loginTrigger} setLoginTrigger={setLoginTrigger} />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
