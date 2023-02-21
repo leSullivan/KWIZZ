@@ -1,17 +1,24 @@
 import { FormEvent, useState } from "react";
 import { resetPassword } from "../../firebase";
+import {
+  auth,
+  loginEmailPassword,
+  registerEmailPassword,
+} from "../../firebase";
+import { fetchSignInMethodsForEmail } from "firebase/auth";
 
 function ForgotPasswordForm() {
   const [email, setEmail] = useState("");
+  const [result, setResult] = useState<string | null>(null);
 
   async function requestNewPassword(e:FormEvent ,email: string) {
     e.preventDefault();
     let success:string = await resetPassword(email);
     if(success === "success"){
       setEmail("");
-      alert("We sent you an email to reset your password. Please check your inbox. 🙌🏼");
+      setResult("We sent you an email to reset your password. Please check your inbox. 🙌🏼");
     }else if(success === "auth/user-not-found"){
-      alert("We couldn't find a user with that email. Please try again.");
+      setResult("We couldn't find a user with that email. Please try again.");
     }
   }
 
@@ -31,7 +38,7 @@ function ForgotPasswordForm() {
       />
       <button className="popup--button">Reset Password</button>
       </form>
-      
+      {result && <p>{result}</p>}
 
     </>
   );

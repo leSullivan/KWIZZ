@@ -51,11 +51,13 @@ button {
 }
 
 button:active {
-  outline: 0;
+  transform: translateY(4px);
 }
 
 button:hover {
-  outline: 0;
+  border-color: #4D5B9E;
+  background: #F5F7FB;    
+  color: #4D5B9E;
 }
 
 nav{

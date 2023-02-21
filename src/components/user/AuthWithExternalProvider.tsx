@@ -1,5 +1,5 @@
 import googleLogo from "../../assets/logo_google.svg";
-import { auth, loginGoogle } from "../../firebase";
+import { loginGoogle } from "../../firebase";
 
 function AuthWithExternalProvider() {
   return (
