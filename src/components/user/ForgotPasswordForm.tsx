@@ -7,7 +7,7 @@ import {
 } from "../../firebase";
 import { fetchSignInMethodsForEmail } from "firebase/auth";
 
-function ForgotPasswordForm() {
+function ForgotPasswordForm(props: {setAuthOptions: (option: "none" | "login" | "register") => void }) {
   const [email, setEmail] = useState("");
   const [result, setResult] = useState<string | null>(null);
 
@@ -21,7 +21,7 @@ function ForgotPasswordForm() {
       setResult("We couldn't find a user with that email. Please try again.");
     }
   }
-
+  props.setAuthOptions("none")
   return (
     <>
       <h2 className="popup--header">Need a hint?</h2>

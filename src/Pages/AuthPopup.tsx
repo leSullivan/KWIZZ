@@ -9,11 +9,7 @@ import CloseIcon from "../assets/close.png";
 import BackIcon from "../assets/back.png";
 import ForgotPasswordForm from "../components/user/ForgotPasswordForm";
 import { FormEvent, useState, useEffect } from "react";
-import {
-  auth,
-  loginEmailPassword,
-  registerEmailPassword,
-} from "../firebase";
+import { auth } from "../firebase";
 import { fetchSignInMethodsForEmail } from "firebase/auth";
 
 interface LoginProps {
@@ -24,9 +20,11 @@ interface LoginProps {
 const AuthPopup = (props: LoginProps) => {
   const [user, loading, error] = useAuthState(auth);
   const [resetEmail, setResetEmail] = useState(false);
-  const [email, setEmail] = useState("")
-  const [authOptions, setAuthOptions] = useState<'none' | "login" | "register">("none");
-   
+  const [email, setEmail] = useState("");
+  const [authOptions, setAuthOptions] = useState<"none" | "login" | "register">(
+    "none"
+  );
+
   useEffect(() => {
     if (loading) return;
     if (user) props.setLoginTrigger(false);
@@ -34,19 +32,18 @@ const AuthPopup = (props: LoginProps) => {
 
   async function checkAuthOptions(e: FormEvent) {
     e.preventDefault();
-    if(email === ""){
+    if (email === "") {
       return;
     }
-    const signInMethods = await fetchSignInMethodsForEmail(
-      auth,
-      email
-    );
+    const signInMethods = await fetchSignInMethodsForEmail(auth, email);
     if (signInMethods.length === 0) {
       setAuthOptions("register");
-    } else if (signInMethods.includes("password")){
-        setAuthOptions("login");
+    } else if (signInMethods.includes("password")) {
+      setAuthOptions("login");
     } else {
-        alert(`You already signed up with ${signInMethods[0]}. Please use that provider to login.`);
+      alert(
+        `You already signed up with ${signInMethods[0]}. Please use that provider to login.`
+      );
     }
   }
 
@@ -75,7 +72,7 @@ const AuthPopup = (props: LoginProps) => {
           />
         </div>
         {resetEmail ? (
-          <ForgotPasswordForm/>
+          <ForgotPasswordForm setAuthOptions={setAuthOptions} />
         ) : (
           <>
             <h2 className="popup--header">Greetings fellow kwizzmaster</h2>
@@ -90,15 +87,20 @@ const AuthPopup = (props: LoginProps) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              {authOptions==='none' && <button type="submit" className="popup--button">Continue</button>}
+              {authOptions === "none" && (
+                <button type="submit" className="popup--button">
+                  Continue
+                </button>
+              )}
             </form>
-            {authOptions==='login' && <EmailLoginForm email={email} />}
-            {authOptions==='register' && <EmailSignUpForm email={email} />}
+            {authOptions === "login" && (
+              <EmailLoginForm email={email} setAuthOptions={setAuthOptions} />
+            )}
+            {authOptions === "register" && (
+              <EmailSignUpForm email={email} setAuthOptions={setAuthOptions} />
+            )}
             <AuthWithExternalProvider />
-            <p
-              onClick={() => setResetEmail(true)}
-              className="popup--link"
-            >
+            <p onClick={() => setResetEmail(true)} className="popup--link">
               Forgot your password?
             </p>
           </>
